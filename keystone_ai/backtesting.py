@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ✅ Alpaca API Credentials (Use paper trading keys)
-API_KEY = "your_alpaca_api_key"
-API_SECRET = "your_alpaca_secret_key"
-BASE_URL = "https://paper-api.alpaca.markets"
+API_KEY = os.getenv("ALPACA_API_KEY")
+API_SECRET = os.getenv("ALPACA_SECRET_KEY")
+BASE_URL = os.getenv("ALPACA_BASE_URL")
 
 # ✅ Initialize Alpaca API
 api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL, api_version="v2")
@@ -80,3 +80,7 @@ def run_backtest(symbol):
 # ✅ Run Backtest for a Specific Stock
 if __name__ == "__main__":
     run_backtest("AAPL")  # Backtest on Apple stock
+
+from dotenv import load_dotenv
+import os
+load_dotenv()
