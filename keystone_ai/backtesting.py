@@ -13,7 +13,7 @@ api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL, api_version="v2")
 
 # ✅ Load Historical Data for Backtesting
 def get_historical_data(symbol, timeframe="1Day", limit=1000):
-    bars = api.get_barset(symbol, timeframe, limit=limit)
+    bars = api.get_bars(symbol, timeframe, limit=limit).df
     df = bars[symbol].df
     df["EMA_Short"] = df["close"].ewm(span=9, adjust=False).mean()
     df["EMA_Long"] = df["close"].ewm(span=21, adjust=False).mean()
