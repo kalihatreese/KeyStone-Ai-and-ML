@@ -1,4 +1,7 @@
-import alpaca_trade_api as tradeapi
+import os
+from dotenv import load_dotenv
+load_dotenv(dotenv_path='keystone_ai/.env')
+from polygon import RESTClient
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,11 +12,11 @@ API_SECRET = os.getenv("ALPACA_SECRET_KEY")
 BASE_URL = os.getenv("ALPACA_BASE_URL")
 
 # ✅ Initialize Alpaca API
-api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL, api_version="v2")
+client = RESTClient(os.getenv("POLYGON_API_KEY"))
 
 # ✅ Load Historical Data for Backtesting
 def get_historical_data(symbol, timeframe="1Day", limit=1000):
-    bars = api.get_bars(symbol, timeframe, limit=limit).df
+    bars = client.stocks_equities_aggregates(symbol, 1, timeframe.lower(), "2023-01-01", "2025-01-01", unadjusted=False).df
     df = bars[symbol].df
     df["EMA_Short"] = df["close"].ewm(span=9, adjust=False).mean()
     df["EMA_Long"] = df["close"].ewm(span=21, adjust=False).mean()
@@ -84,3 +87,11 @@ if __name__ == "__main__":
 from dotenv import load_dotenv
 import os
 load_dotenv()
+
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+from dotenv import load_dotenv
+load_dotenv(dotenv_path='keystone_ai/.env')
