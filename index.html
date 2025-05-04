@@ -1,1 +1,44 @@
 [paste above code into index.html]
+# 1. Append the Keystone overview HTML to your site’s index.html
+cat << 'EOF' >> ~/site/index.html
+
+  <!-- Keystone AI & ML In-Depth Overview -->
+  <section id="keystone-overview" class="py-12 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Mission &amp; Vision</h2>
+      <p class="mb-6">
+        Keystone AI &amp; ML is on a relentless quest to unlock financial freedom and technological progress through the power of autonomous intelligence. Born from the fusion of cutting-edge machine learning, quantitative finance, and quantum-inspired reasoning, Keystone stands as a pillar of innovation—“Building the Archways of Artificial Intelligence with Keystone AI &amp; ML.” Under the ReeseLimitedLLC banner, we leverage every tool at our disposal to reshape markets, empower traders, and safeguard truth in the digital age.
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-3">Core Capabilities</h3>
+      <ul class="list-disc list-inside mb-6">
+        <li><strong>Adaptive Trading Engines:</strong> From our flagship RapidAlpha-X suite to the SmallCap Sniper and EliteMacro Alpha models, Keystone delivers multi-strategy engines that combine momentum, mean reversion, global macro theses, and deep-learning forecasts—each fine-tuned to hit 93–98 % accuracy in live markets.</li>
+        <li><strong>MEV &amp; DeFi Sniper Solutions:</strong> Our EnhancedSniper bots for Ethereum and multi-chain DEXes execute sandwich and arbitrage strategies with nanosecond precision, reinvesting profits automatically and defending against frontrunners.</li>
+        <li><strong>Quantum-Augmented AI:</strong> Integrating IBM Qiskit simulations and real-time knowledge graphs, Keystone explores quantum variational circuits and neuro-symbolic reasoning to push predictive boundaries beyond classical limits.</li>
+        <li><strong>Self-Evolving Overlord:</strong> The Keystone Overlord core constantly self-optimizes—writing its own code patches, integrating new data sources, and rebalancing strategies—so that you stay ahead of market shifts without lifting a finger.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">Platform &amp; Integration</h3>
+      <ul class="list-disc list-inside mb-6">
+        <li><strong>Web &amp; Mobile Dashboards:</strong> A unified portal hosted at <a href="https://www.keystoneaiml.com">www.keystoneaiml.com</a> brings real-time PnL charts, signal alerts, backtest reports, and customizable strategy controls to desktop, Android, and macOS.</li>
+        <li><strong>API-First Architecture:</strong> Secure REST and WebSocket endpoints let you plug Keystone into your own apps, bots, and enterprise workflows—complete with SMS and email notifications for premium tiers.</li>
+        <li><strong>Monetization Tiers:</strong> Choose from Overlord Sniper Vault ($249), Keystone Overlord School Module 1 ($99), or the Full Bundle Vault ($499) to get code, licenses, educational modules, backtest data, and continual updates.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">Why Keystone?</h3>
+      <p>
+        Keystone AI &amp; ML isn’t just another trading tool—it’s a mission-driven ecosystem engineered for truth, transparency, and transformative impact. Whether you’re a retail trader chasing alpha or an institution demanding cutting-edge execution, Keystone delivers self-sustaining intelligence that evolves, adapts, and outperforms—guided by a higher purpose and unyielding commitment to freedom and prosperity.
+      </p>
+    </div>
+  </section>
+
+EOF
+
+# 2. Commit & push
+cd ~/site
+git add index.html
+git commit -m "Add Keystone AI & ML in-depth overview section"
+git push origin main
+
+# 3. (Optional) Rerun your rsync deploy if you use that:
+rsync -avz --delete ~/site/ user@yourserver.com:/var/www/html/
